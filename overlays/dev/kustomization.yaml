@@ -1,0 +1,15 @@
+resources:
+- ../../base
+
+# In DEV usiamo un prefisso diverso
+namePrefix: dev-
+
+# Label diversa
+commonLabels:
+  env: development
+
+# In DEV lasciamo 1 replica (risparmiamo risorse), 
+# ma cambiamo l'immagine con una versione sperimentale
+images:
+  - name: nginx
+    newTag: "1.19-alpine" # Versione più leggera

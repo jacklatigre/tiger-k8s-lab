@@ -1,0 +1,19 @@
+resources:
+- ../../base
+
+# 1. Aggiungiamo un prefisso ai nomi (es: tiger-app diventa prod-tiger-app)
+namePrefix: prod-
+
+# 2. Aggiungiamo una label automatica a tutti i componenti
+commonLabels:
+  env: production
+
+# 3. Cambiamo il numero di repliche solo per questo ambiente
+patches:
+- target:
+    kind: Deployment
+    name: tiger-app
+  patch: |-
+    - op: replace
+      path: /spec/replicas
+      value: 3
